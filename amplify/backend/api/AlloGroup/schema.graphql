@@ -1,0 +1,48 @@
+type CommandeFoodModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  FoodCard: [FoodCardModel] @hasMany(indexName: "byCommandeFoodModel", fields: ["id"])
+  heure: AWSDate
+  Livreur: [LivreurModel] @hasMany(indexName: "byCommandeFoodModel", fields: ["id"])
+}
+
+type FoodCardModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  price: String
+  description: String
+  categorie: String
+  imageproduit: AWSURL
+  EntrepriseFood: [FastFoodEntrepriseModel] @hasMany(indexName: "byFoodCardModel", fields: ["id"])
+  commandefoodmodelID: ID! @index(name: "byCommandeFoodModel")
+}
+
+type TablelivraisonModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nomlivraison: String
+  message: String
+  lieudedepart: String
+  lieuarrivee: String
+  numerodepart: Int
+  numeroarrivee: Int
+  Livreur: [LivreurModel] @hasMany(indexName: "byTablelivraisonModel", fields: ["id"])
+  personnedepart: String
+  personnearrivee: String
+}
+
+type LivreurModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nom: String
+  prenom: String
+  numero: Int
+  photoprofil: AWSURL
+  tablelivraisonmodelID: ID! @index(name: "byTablelivraisonModel")
+  commandefoodmodelID: ID! @index(name: "byCommandeFoodModel")
+}
+
+type FastFoodEntrepriseModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nom_entreprise: String
+  telephone: Int
+  logo: AWSURL
+  foodcardmodelID: ID! @index(name: "byFoodCardModel")
+} 
