@@ -11,7 +11,7 @@ type FoodCardModel @model @auth(rules: [{allow: public}]) {
   price: String
   description: String
   categorie: String
-  imageproduit: AWSURL
+  imageproduit: String
   EntrepriseFood: [FastFoodEntrepriseModel] @hasMany(indexName: "byFoodCardModel", fields: ["id"])
   commandefoodmodelID: ID! @index(name: "byCommandeFoodModel")
 }
@@ -22,8 +22,8 @@ type TablelivraisonModel @model @auth(rules: [{allow: public}]) {
   message: String
   lieudedepart: String
   lieuarrivee: String
-  numerodepart: Int
-  numeroarrivee: Int
+  numerodepart: String
+  numeroarrivee: String
   Livreur: [LivreurModel] @hasMany(indexName: "byTablelivraisonModel", fields: ["id"])
   personnedepart: String
   personnearrivee: String
@@ -33,8 +33,8 @@ type LivreurModel @model @auth(rules: [{allow: public}]) {
   id: ID!
   nom: String
   prenom: String
-  numero: Int
-  photoprofil: AWSURL
+  numero: String
+  photoprofil: String
   tablelivraisonmodelID: ID! @index(name: "byTablelivraisonModel")
   commandefoodmodelID: ID! @index(name: "byCommandeFoodModel")
 }
@@ -42,7 +42,7 @@ type LivreurModel @model @auth(rules: [{allow: public}]) {
 type FastFoodEntrepriseModel @model @auth(rules: [{allow: public}]) {
   id: ID!
   nom_entreprise: String
-  telephone: Int
-  logo: AWSURL
+  telephone: String
+  logo: String
   foodcardmodelID: ID! @index(name: "byFoodCardModel")
 } 

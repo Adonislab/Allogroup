@@ -132,7 +132,7 @@ export const schema = {
                 "imageproduit": {
                     "name": "imageproduit",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -230,14 +230,14 @@ export const schema = {
                 "telephone": {
                     "name": "telephone",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "logo": {
                     "name": "logo",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -326,14 +326,14 @@ export const schema = {
                 "numero": {
                     "name": "numero",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "photoprofil": {
                     "name": "photoprofil",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -452,14 +452,14 @@ export const schema = {
                 "numerodepart": {
                     "name": "numerodepart",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "numeroarrivee": {
                     "name": "numeroarrivee",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -539,5 +539,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.5",
-    "version": "6a13035de7cf205bbd73937b365be320"
+    "version": "4bbe954a240b758236fa470851fb0976"
 };

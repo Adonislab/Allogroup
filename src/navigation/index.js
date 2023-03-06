@@ -13,6 +13,8 @@ import NewPasswordScreen from  '../screens/NewPasswordScreen';
 import AlloGroup from '../screens/AlloGroup/AlloGroup';
 import Food from '../screens/Office/AlloFood/Food';
 import Office from '../screens/Office/Office';
+import InscriptionGerantFood from '../screens/Office/AlloFood/Gerant/inscriptionFastGerant';
+import InscriptionCardFood from '../screens/Office/AlloFood/Gerant/inscriptionProduit';
 import NavigationTab from './navigation';
 import DebutLivraison from '../screens/Office/AlloLivreur/DebutLivraison';
 import DetailLivraison from '../screens/Office/AlloLivreur/Details';
@@ -64,7 +66,7 @@ const Navigation = () => {
 	}
 	return (
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='InscriptionLivreur'>
+			<Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='InscriptionCardFood'>
 
 				
 				{ user ? (
@@ -81,7 +83,9 @@ const Navigation = () => {
 					<Stack.Screen name='Connexion' component={SignInScreen}/>	
 					<Stack.Screen name='NavigationTab' component={NavigationTab}/>
 					<Stack.Screen name='NavigationTabFood' component={NavigationTabFood}/>
+					<Stack.Screen name='InscriptionGerantFood' component={InscriptionGerantFood}/>
 					<Stack.Screen name='DebutLivraison' component={DebutLivraison}/>
+					<Stack.Screen name='InscriptionCardFood' component={InscriptionCardFood}/>
 	
 					<Stack.Screen name='InterfaceClient' component={InterfaceClient}/>
 					<Stack.Screen name='AlloGroup' component={AlloGroup}/>

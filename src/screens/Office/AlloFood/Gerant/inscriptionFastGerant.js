@@ -6,7 +6,7 @@ import { AssetsSelector } from 'expo-images-picker';
 import { Ionicons } from '@expo/vector-icons'
 import { MediaType, Asset } from 'expo-media-library';
 import { DataStore } from '@aws-amplify/datastore';
-import { LivreurModel } from '../../../../models';
+import { FastFoodEntrepriseModel } from '../../../../models';
 import '@azure/core-asynciterator-polyfill';
 import Amplify,{ Storage } from 'aws-amplify';
 import { useNavigation } from '@react-navigation/native';
@@ -21,20 +21,16 @@ export default function App() {
 
  
   		const [nom, setNom] = useState('');
-  		const [prenom, setPrenom] = useState('');
   		const [numero, setNumero] = useState();
 
-  		const [image, setImage] = useState('');
-  		const onPressInscriptionSuiteLivreur = async () => {
+  		const onPressInscriptionSuiteFast = async () => {
         
         		 await DataStore.save(
-            			new LivreurModel({
-                			"nom": nom,
-                			"prenom": prenom,
-                			"numero": numero,
-                			"photoprofil": "uri",
-                			"tablelivraisonmodelID": "a3f4095e-39de-43d2-baf4-f8c16f0f6f4d",
-                			"commandefoodmodelID": "a3f4095e-39de-43d2-baf4-f8c16f0f6f4d"
+            			new FastFoodEntrepriseModel({
+                			"nom_entreprise": nom,
+                			"telephone": numero,
+                			"logo": "a3f4095e-39de-43d2-baf4-f8c16f0f6f4d",
+                			"foodcardmodelID": "a3f4095e-39de-43d2-baf4-f8c16f0f6f4d"
             				})
         			); 
         		navigation.navigate('Services');
@@ -56,7 +52,7 @@ export default function App() {
  
  		const uploadFile = async (file) => {
     			const img = await fetchImageUri(file.uri);
-    			return Storage.put(nom+prenom+`photo_profil${Math.random()}.jpg`,img, {
+    			return Storage.put(nom`logo_entreprise${Math.random()}.jpg`,img, {
       				level:'public',
       				contentType:file.type,
       				progressCallback(uploadProgress){
@@ -66,17 +62,13 @@ export default function App() {
     		.then((res) => {
       		Storage.get(res.key)
       		.then((result) => {
-        		console.log('RESULT --- ', result);
+        	console.log('RESULT --- ', result);
 
-        		let awsImageUri = result.substring(0,result.indexOf('?'))
+        	let awsImageUri = result.substring(0,result.indexOf('?'))
+       		console.log('RESULT AFTER REMOVED URI --', awsImageUri)
 
-       			console.log('RESULT AFTER REMOVED URI --', awsImageUri)
-
-        		setIsLoading(false)
-			
-			
+        	setIsLoading(false)
       		})
-		
       		.catch(e => {
         		console.log(e);
       		})
@@ -238,7 +230,7 @@ export default function App() {
     			/>
 
     		   	<View style={{backgroundColor:'#0A5089', alignItems:'center', marginBottom:10}}>
-     				 <Text style={{fontSize:18, fontWeight:'bold', color:'white'}}>NOM</Text>    
+     				 <Text style={{fontSize:18, fontWeight:'bold', color:'white'}}>ENTREPRISE</Text>    
    		  	 </View>
 
 
@@ -246,25 +238,10 @@ export default function App() {
         			style={styles.input}
         			onChangeText={setNom}
         			value={nom}
-        			placeholder="Nom de famille"
+        			placeholder="Entreprise"
         			required={true}
 				errorMessage="Obligatoire"
         	  	/>
-
-
-    		 	<View style={{backgroundColor:'#0A5089', alignItems:'center', marginBottom:10}}>
-      				<Text style={{fontSize:18, fontWeight:'bold', color:'white'}}>PRENOM</Text>    
-    		 	</View>    
-        
-   		 	<TextInput
-        			style={styles.input}
-           			onChangeText={setPrenom}
-            			value={prenom}
-            			placeholder="Votre prénom"
-            			required={true}
-				errorMessage="Obligatoire"
-        		/>
-
 
 
    			<View style={{backgroundColor:'#0A5089', alignItems:'center', marginBottom:10}}>
@@ -289,7 +266,7 @@ export default function App() {
 
 
  		 	<View style={{backgroundColor:'#0A5089', alignItems:'center', marginBottom:10}}>
-     				 <Text style={{fontSize:18, fontWeight:'bold', color:'white'}}>Ajoutez une photo</Text>    
+     				 <Text style={{fontSize:18, fontWeight:'bold', color:'white'}}>Ajoutez un logo</Text>    
  		 	</View>        
   
 
@@ -302,8 +279,8 @@ export default function App() {
 
 
  			<Button
-        			onPress={onPressInscriptionSuiteLivreur}
-       	 			title="Je veux être livreur"
+        			onPress={onPressInscriptionSuiteFast}
+       	 			title="Je suis un Fast Food"
         			color="#ff6d00"
  			/>
 
@@ -318,7 +295,7 @@ const styles = StyleSheet.create({
  		 /* Other styles hidden to keep the example brief... */
   		
 		thumbnail: {
-    			width: 300,
+    			Width: 300,
     			height: 300,
     			resizeMode: "contain"
   		},

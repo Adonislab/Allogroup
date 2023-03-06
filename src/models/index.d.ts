@@ -85,7 +85,7 @@ type EagerFastFoodEntrepriseModel = {
   };
   readonly id: string;
   readonly nom_entreprise?: string | null;
-  readonly telephone?: number | null;
+  readonly telephone?: string | null;
   readonly logo?: string | null;
   readonly foodcardmodelID: string;
   readonly createdAt?: string | null;
@@ -99,7 +99,7 @@ type LazyFastFoodEntrepriseModel = {
   };
   readonly id: string;
   readonly nom_entreprise?: string | null;
-  readonly telephone?: number | null;
+  readonly telephone?: string | null;
   readonly logo?: string | null;
   readonly foodcardmodelID: string;
   readonly createdAt?: string | null;
@@ -120,7 +120,7 @@ type EagerLivreurModel = {
   readonly id: string;
   readonly nom?: string | null;
   readonly prenom?: string | null;
-  readonly numero?: number | null;
+  readonly numero?: string | null;
   readonly photoprofil?: string | null;
   readonly tablelivraisonmodelID: string;
   readonly commandefoodmodelID: string;
@@ -136,7 +136,7 @@ type LazyLivreurModel = {
   readonly id: string;
   readonly nom?: string | null;
   readonly prenom?: string | null;
-  readonly numero?: number | null;
+  readonly numero?: string | null;
   readonly photoprofil?: string | null;
   readonly tablelivraisonmodelID: string;
   readonly commandefoodmodelID: string;
@@ -160,8 +160,8 @@ type EagerTablelivraisonModel = {
   readonly message?: string | null;
   readonly lieudedepart?: string | null;
   readonly lieuarrivee?: string | null;
-  readonly numerodepart?: number | null;
-  readonly numeroarrivee?: number | null;
+  readonly numerodepart?: string | null;
+  readonly numeroarrivee?: string | null;
   readonly Livreur?: (LivreurModel | null)[] | null;
   readonly personnedepart?: string | null;
   readonly personnearrivee?: string | null;
@@ -179,8 +179,8 @@ type LazyTablelivraisonModel = {
   readonly message?: string | null;
   readonly lieudedepart?: string | null;
   readonly lieuarrivee?: string | null;
-  readonly numerodepart?: number | null;
-  readonly numeroarrivee?: number | null;
+  readonly numerodepart?: string | null;
+  readonly numeroarrivee?: string | null;
   readonly Livreur: AsyncCollection<LivreurModel>;
   readonly personnedepart?: string | null;
   readonly personnearrivee?: string | null;
